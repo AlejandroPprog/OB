@@ -1,0 +1,10 @@
+f = open(r'C:\Users\alejandro\Desktop\jp\OB\Python\part8\archivonuevo.txt', 'x')
+f.write('Modificado\n')
+f.write('modificadinho\n')
+f.close()
+
+f = open(r'C:\Users\alejandro\Desktop\jp\OB\Python\part8\archivonuevo.txt', 'r+')
+f.readline()
+f.write('te modifico otra vez perrou')
+print(f.read())
+f.close()
