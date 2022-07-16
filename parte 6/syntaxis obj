@@ -1,0 +1,61 @@
+#definicion de obejeto
+from abc import ABC, abstractmethod
+
+class Nombre:
+    #propiedad de clase
+    prop = 3.3
+
+    def funcion(self):
+        self.prop = 5
+    
+    def isprop(self):
+        self.prop = 0
+
+#herencia
+#miClase hereda las propiedades y métodos de Nombre
+class MiClase(Nombre):
+    propDeEstaClase = None
+    def __init__(self, algo):
+        self.propDeEstaClase = algo
+        print("Esto se inicializa al crear la clase")
+
+    def __del__(self):
+        print("Invocacion de destructor, ocurre cuando nada mas llama a la variable generada con esta clase")
+#clase abstractas, declarar en inicio: "from abc import ABC, abstractmethod"
+#en la clase hacer @abstractmethod
+#esta clase define funciones a otras clases, cuando hay @abstra... se debe implementar esa funcion en la nueva subclase
+class Raro(ABC):
+    @abstractmethod
+    def propRara(self):
+        pass
+    #metodo no abstracto
+    def propRara2(self):
+        print("izi")
+class PerroRaro(Raro):
+    def propRara(self):
+        print("GUAU BITCH")
+
+#podemos instanciar y llamar bichos complejos
+class balas:
+    cantidad = 30
+class AK47:
+    tipo = "fusil"
+    balas = balas()
+class arma():
+    tipo = AK47()
+
+
+#ejemplo
+#si prop de clase empieza por "_" no modificar desde fuera
+variableClase = Nombre()
+variableClase.funcion()
+print(variableClase.prop)
+MiClase1 = MiClase("inicializacion de la variable 'algo'")
+print(MiClase1.propDeEstaClase)
+
+gun = arma()
+print(gun.tipo.tipo, '\n', gun.tipo.balas.cantidad)
+
+p = PerroRaro()
+p.propRara()
+p.propRara2()
